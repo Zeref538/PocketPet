@@ -16,17 +16,50 @@ Five pets, each with idle, happy, sad, crying, eating, playing, studying and sle
 - Frames are named `<animation>_<frame>.png`, for example `idle_01.png`
 - `tools/slice_*.py` re-cut each sheet into frames (`python tools/slice_grid.py pup` or `bunny`)
 
-## Open the game in Unity
+## Import the pup project into Unity
 
-The Unity project is the `Game` folder (Unity 6000.5.10f1).
+The Unity project is the `Game` folder. It uses **Unity 6000.2.2f1**.
 
-1. Open **Unity Hub**, click **Add**, then **Add project from disk**.
-2. Pick the `Game` folder inside PocketPet (not PocketPet itself).
-3. Open `Assets/Scenes/Pup.unity` and press **Play**.
-4. Press keys **1** to **8** to switch animation: idle, happy, sad, crying, eating, playing, studying, sleeping.
+### 1. Get the files
 
-In code, set the animation with `animator.SetInteger("Mood", 0..7)`.
-To rebuild the clips after changing frames: menu **PocketPet > Build Pup**.
+Clone the repo (see [Get a copy](#get-a-copy) below) or download the ZIP and unzip it.
+
+### 2. Install the right Unity version (once per computer)
+
+1. Open **Unity Hub** and click **Installs** on the left.
+2. If **6000.2.2f1** is not in the list, click **Install Editor**.
+3. If **6000.2.2f1** is listed, select it and click **Install**.
+4. If it isn't listed, open the **Archive** tab and click the download archive link. On that web page, find **6000.2.2f1** and click **Install** in the **Hub installation** column. Allow it to open Unity Hub.
+5. Click **Install** in Hub and wait for it to finish (progress shows under **Downloads**).
+
+### 3. Add the project
+
+1. In **Unity Hub**, click **Projects** on the left.
+2. Click **Add**, then **Add project from disk**.
+3. Pick the `Game` folder inside `PocketPet`. Not `PocketPet` itself: Hub only accepts a folder that has `Assets`, `Packages` and `ProjectSettings` directly inside it.
+4. Click the project to open it. The first open takes a few minutes while Unity builds its `Library` cache.
+
+If Hub says the version is missing or offers to open it with another version, install 6000.2.2f1 first (step 2). Opening with a different version can work but may change project files.
+
+### 4. Try it
+
+1. In the **Project** window, open `Assets/Scenes/Pup.unity`.
+2. Press **Play**.
+3. Press keys **1** to **8** to switch animation: idle, happy, sad, crying, eating, playing, studying, sleeping.
+
+### If the animations look broken
+
+Click the menu **PocketPet > Build Pup**. It rebuilds all 8 clips, the Animator and the scene from the PNG frames, inside the Unity version you have open.
+
+### Use it in your own code
+
+The Animator has one number, `Mood`. Set it to switch animation:
+
+```csharp
+GetComponent<Animator>().SetInteger("Mood", 4);   // 4 = eating
+```
+
+0 idle, 1 happy, 2 sad, 3 crying, 4 eating, 5 playing, 6 studying, 7 sleeping.
 
 ## Just the images
 
