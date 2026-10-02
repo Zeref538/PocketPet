@@ -6,3 +6,5 @@ obj/
 *.csproj
 *.sln
 .DS_Store
+.vscode/
+*.slnx
