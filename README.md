@@ -61,4 +61,4 @@ If `git push` is refused, someone pushed first. Run `git pull`, then `git push` 
 2. Select all the PNGs in one pet's folder. In the Inspector set **Texture Type** to **Sprite (2D and UI)**.
 3. Set **Filter Mode** to **Point (no filter)** so the pixels stay sharp.
 4. Set **Compression** to **None**, then click **Apply**.
-5. Select the 6 frames of one animation (for example `idle_01` to `idle_04`) and drag them into the Scene. Unity asks where to save the animation clip.
+5. Select every frame of one animation (for example `idle_01` to `idle_04`) and drag them into the Scene. Unity asks where to save the animation clip.
