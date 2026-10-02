@@ -1,7 +1,13 @@
 fileFormatVersion: 2
-guid: 40305253812706146b27bb02e3c56371
+guid: e76ed79f0c26dd648a2ce78baeb86998
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 705371050313808166
+    second: sleeping_04_0
+  - first:
+      213: -804413169546204083
+    second: sleeping_04_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,7 +114,51 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sleeping_04_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 26
+        width: 160
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6297cc8ab3bf9c900800000000000000
+      internalID: 705371050313808166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sleeping_04_1
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 110
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4c6d88fb7626d4f0800000000000000
+      internalID: -804413169546204083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -122,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sleeping_04_0: 705371050313808166
+      sleeping_04_1: -804413169546204083
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

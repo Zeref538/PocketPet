@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 7ff77a429d3b07c4f914ff03ff387298
+guid: 6bfdc86e6af816c428ed48a61640a890
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2383348805943084441
+    second: crying_02_0
+  - first:
+      213: -4557657407809830907
+    second: crying_02_1
+  - first:
+      213: -5493046375377676590
+    second: crying_02_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,7 +117,73 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: crying_02_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 67
+        width: 24
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a39e573e4aceed0800000000000000
+      internalID: -2383348805943084441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crying_02_1
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 4
+        width: 154
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 500419f2cb2ffb0c0800000000000000
+      internalID: -4557657407809830907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crying_02_2
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 68
+        width: 25
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d6dddccc67c4c3b0800000000000000
+      internalID: -5493046375377676590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -122,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crying_02_0: -2383348805943084441
+      crying_02_1: -4557657407809830907
+      crying_02_2: -5493046375377676590
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

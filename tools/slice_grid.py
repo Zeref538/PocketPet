@@ -112,15 +112,19 @@ def by_owner(pet, rgba, cells):
     faint = (rgba[..., 3] > 0) & ~solid & (dist <= 3)
     owner_map[faint] = owner_map[iy[faint], ix[faint]]
 
-    # Where does the pet usually sit inside its cell? Centre the box there.
-    pts = []
-    for idx, (_, _, (x0, y0, x1, y1)) in enumerate(cells):
+    # Pin every frame on the pet's own feet: the bottom centre of its body
+    # (the biggest piece in the frame). The pet stays on one spot while it
+    # animates; balls, sparkles and Zzz keep their place around it.
+    pts, anchors = [], []
+    sizes = np.bincount(lab.ravel())
+    for idx in range(len(cells)):
         fy, fx = np.nonzero(owner_map == idx)
         assert len(fx), f"cell {idx} is empty"
         pts.append((fy, fx))
-    shift = int(np.median([(fx.min() + fx.max()) / 2 - (c[2][0] + c[2][2]) / 2
-                           for (fy, fx), c in zip(pts, cells)]))
-    anchors = [((x0 + x1) // 2 + shift, y1) for _, _, (x0, y0, x1, y1) in cells]
+        mine = [i for i in range(1, n + 1) if owner[i] == idx]
+        body = max(mine, key=lambda i: sizes[i])
+        by, bx = np.nonzero(lab == body)
+        anchors.append(((bx.min() + bx.max()) // 2, by.max() + 1))
 
     half = max(int(np.abs(fx - ax).max()) for (fy, fx), (ax, ay) in zip(pts, anchors)) + 3
     up = max(int(ay - fy.min()) for (fy, fx), (ax, ay) in zip(pts, anchors)) + 3

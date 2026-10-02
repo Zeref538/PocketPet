@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: dc93794e22432534586c38670a2640d9
+guid: 56b6d14f78335774f89adc8939559998
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2818057688563168383
+    second: sleeping_05_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,7 +111,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sleeping_05_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 26
+        width: 185
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18b42a4867f34e8d0800000000000000
+      internalID: -2818057688563168383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -122,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sleeping_05_0: -2818057688563168383
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

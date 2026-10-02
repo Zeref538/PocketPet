@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 54ccce6e4299dac4ea62003ff0a7d6a8
+guid: f26f59f551215cb4a9053b7269ac22d0
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6300495766795279655
+    second: sad_02_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,7 +111,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sad_02_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 8
+        width: 157
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72d5fa8b48bdf6750800000000000000
+      internalID: 6300495766795279655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -122,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sad_02_0: 6300495766795279655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

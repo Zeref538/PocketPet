@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 2d4d79daa99a02e4daed8a04b5e11c2b
+guid: 7fa6c34fe240c2743a0025dd4df9d64e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4944743354378293129
+    second: idle_04_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,7 +111,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: idle_04_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 14
+        width: 143
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98f0137e1e14f9440800000000000000
+      internalID: 4944743354378293129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -122,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      idle_04_0: 4944743354378293129
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 0005ef4f519301e42b0d29a61a9bf454
+guid: a0974ab1ce8506846a9be76e2c73685f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2366321921503859272
+    second: studying_04_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,7 +111,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: studying_04_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 17
+        width: 159
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8421573104dd6d020800000000000000
+      internalID: 2366321921503859272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -122,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      studying_04_0: 2366321921503859272
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

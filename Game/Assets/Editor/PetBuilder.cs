@@ -12,7 +12,7 @@ public static class PetBuilder
 {
     const string Frames = "Assets/Sprites/Pup";
     const string AnimDir = "Assets/Animations/Pup";
-    const string ScenePath = "Assets/Scenes/Pup.unity";
+    const string ScenePath = "Assets/Scenes/SampleScene.unity";
 
     // Order = the "Mood" number each animation answers to.
     // Frames per second: calm moods slower, lively ones faster.
@@ -99,25 +99,19 @@ public static class PetBuilder
         return clip;
     }
 
+    // Uses the Universal 2D template's own SampleScene (Main Camera and
+    // Global Light 2D already in it, same as Shadow) and only adds the pup.
     static void MakeScene(AnimatorController controller)
     {
-        var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
-
-        var cam = new GameObject("Main Camera").AddComponent<Camera>();
-        cam.tag = "MainCamera";
-        cam.orthographic = true;
-        cam.orthographicSize = 1.4f;
-        cam.clearFlags = CameraClearFlags.SolidColor;
-        cam.backgroundColor = new Color32(255, 228, 236, 255);   // soft pink
-        cam.transform.position = new Vector3(0f, 0f, -10f);
-
-        // URP 2D lights sprites with 2D lights. One global light = even,
-        // full brightness, same as Shadow's scene.
-        var light = new GameObject("Global Light 2D").AddComponent<UnityEngine.Rendering.Universal.Light2D>();
-        light.lightType = UnityEngine.Rendering.Universal.Light2D.LightType.Global;
+        var scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+        var old = GameObject.Find("Pup");
+        if (old != null) Object.DestroyImmediate(old);
 
         var pet = new GameObject("Pup");
-        pet.transform.position = new Vector3(0f, -0.9f, 0f);
+        // The template camera shows 10 units of height; at 3x the pup fills
+        // about half the screen instead of a sixth.
+        pet.transform.localScale = Vector3.one * 3f;
+        pet.transform.position = new Vector3(0f, -2.5f, 0f);
         var sr = pet.AddComponent<SpriteRenderer>();
         sr.sprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{Frames}/idle_01.png");
         // URP 2D's own sprite material, so the Global Light 2D lights the pup.
@@ -125,7 +119,6 @@ public static class PetBuilder
             "Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat");
         if (lit != null) sr.sharedMaterial = lit;
         pet.AddComponent<Animator>().runtimeAnimatorController = controller;
-        pet.AddComponent<PetDemo>();
 
         EditorSceneManager.SaveScene(scene, ScenePath);
         EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath, true) };

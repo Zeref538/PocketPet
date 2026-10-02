@@ -11,54 +11,38 @@ Five pets, each with idle, happy, sad, crying, eating, playing, studying and sle
 - `art/frames/wolf/`: 48 frames, all 202x187
 - `art/frames/hamster/`: 33 frames, all 208x187
 - `art/source/otter_sheet.png` and `art/frames/otter/`: 64 frames (8 per animation), all 185x142
-- `art/source/pup_sheet.png` and `art/frames/pup/`: 48 frames (6 per animation), all 278x167
+- `art/source/pup_sheet.png` and `art/frames/pup/`: 48 frames (6 per animation), all 294x149, feet pinned to the same spot
 - `art/source/bunny_sheet.png` and `art/frames/bunny/`: 32 frames (4 per animation), all 137x107
 - Frames are named `<animation>_<frame>.png`, for example `idle_01.png`
 - `tools/slice_*.py` re-cut each sheet into frames (`python tools/slice_grid.py pup` or `bunny`)
 
 ## Import the pup project into Unity
 
-The Unity project is the `Game` folder. It uses **Unity 6000.2.2f1**.
+The Unity project is the `Game` folder. It is a **Universal 2D** project (URP with the 2D Renderer), set up the same way as Shadow, using **Unity 6000.5.10f1**.
 
 ### 1. Get the files
 
 Clone the repo (see [Get a copy](#get-a-copy) below) or download the ZIP and unzip it.
 
-### 2. Install the right Unity version (once per computer)
+### 2. Add the project
 
-1. Open **Unity Hub** and click **Installs** on the left.
-2. If **6000.2.2f1** is not in the list, click **Install Editor**.
-3. If **6000.2.2f1** is listed, select it and click **Install**.
-4. If it isn't listed, open the **Archive** tab and click the download archive link. On that web page, find **6000.2.2f1** and click **Install** in the **Hub installation** column. Allow it to open Unity Hub.
-5. Click **Install** in Hub and wait for it to finish (progress shows under **Downloads**).
-
-### 3. Add the project
-
-1. In **Unity Hub**, click **Projects** on the left.
+1. Open **Unity Hub** and click **Projects** on the left.
 2. Click **Add**, then **Add project from disk**.
 3. Pick the `Game` folder inside `PocketPet`. Not `PocketPet` itself: Hub only accepts a folder that has `Assets`, `Packages` and `ProjectSettings` directly inside it.
-4. Click the project to open it. The first open takes a few minutes while Unity builds its `Library` cache.
+4. Make sure the version shown is **6000.5.10f1**, then click the project to open it.
+5. The first open takes a few minutes while Unity builds its `Library` cache.
 
-If Hub says the version is missing or offers to open it with another version, install 6000.2.2f1 first (step 2). Opening with a different version can work but may change project files.
+### 3. See the animations
 
-### 4. Build the pup (first open only)
+1. In the **Project** window, open `Assets/Scenes/SampleScene.unity`. It has the Main Camera, the Global Light 2D and the **Pup**.
+2. Press **Play**. The pup plays its idle animation in place.
+3. To watch the others: click **Pup**, open **Window > Animation > Animator**, and change the **Mood** number (0 to 7) while playing.
 
-The project is set up as **Universal 2D** (URP with the 2D Renderer), like Shadow.
+What is where:
 
-1. Wait until the spinner in the bottom-right corner stops.
-2. Click the menu **PocketPet > Build Pup**.
-
-This rebuilds the 8 clips, the Animator and the scene in your Unity version, and adds the **Global Light 2D** the scene needs.
-
-### 5. Try it
-
-1. In the **Project** window, open `Assets/Scenes/Pup.unity`.
-2. Press **Play**.
-3. Press keys **1** to **8** to switch animation: idle, happy, sad, crying, eating, playing, studying, sleeping.
-
-### If the animations look broken
-
-Click the menu **PocketPet > Build Pup**. It rebuilds all 8 clips, the Animator and the scene from the PNG frames, inside the Unity version you have open.
+- `Assets/Sprites/Pup/`: the 48 frames, set to Point filter (sharp pixels) with the pivot at the feet
+- `Assets/Animations/Pup/`: the 8 clips and `Pup.controller`
+- Every frame has the pup's feet on the same spot, so it animates without sliding around
 
 ### Use it in your own code
 
@@ -69,6 +53,8 @@ GetComponent<Animator>().SetInteger("Mood", 4);   // 4 = eating
 ```
 
 0 idle, 1 happy, 2 sad, 3 crying, 4 eating, 5 playing, 6 studying, 7 sleeping.
+
+To rebuild the clips after changing frames: menu **PocketPet > Build Pup**.
 
 ## Just the images
 
