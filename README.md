@@ -14,6 +14,7 @@ Five pets, each with idle, happy, sad, crying, eating, playing, studying and sle
 - `art/source/pup_sheet.png` and `art/frames/pup/`: 48 frames (6 per animation), all 294x149, feet pinned to the same spot
 - `art/source/bunny_sheet.png` and `art/frames/bunny/`: 32 frames (4 per animation), all 137x107
 - Frames are named `<animation>_<frame>.png`, for example `idle_01.png`
+- `art/source/ui_sheet.png` and `art/ui/`: 44 UI pieces (buttons, pressed buttons, icons, square and round buttons, bars, speech bubble), also in `Game/Assets/Sprites/UI/`
 - `tools/slice_*.py` re-cut each sheet into frames (`python tools/slice_grid.py pup` or `bunny`)
 
 ## Import the pup project into Unity
