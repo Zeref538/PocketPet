@@ -11,7 +11,7 @@ Five pets, each with idle, happy, sad, crying, eating, playing, studying and sle
 - `art/frames/wolf/`: 48 frames, all 202x187
 - `art/frames/hamster/`: 33 frames, all 208x187
 - `art/source/otter_sheet.png` and `art/frames/otter/`: 64 frames (8 per animation), all 185x142
-- `art/source/pup_sheet.png` and `art/frames/pup/`: 48 frames (6 per animation), all 249x153
+- `art/source/pup_sheet.png` and `art/frames/pup/`: 48 frames (6 per animation), all 278x167
 - `art/source/bunny_sheet.png` and `art/frames/bunny/`: 32 frames (4 per animation), all 137x107
 - Frames are named `<animation>_<frame>.png`, for example `idle_01.png`
 - `tools/slice_*.py` re-cut each sheet into frames (`python tools/slice_grid.py pup` or `bunny`)

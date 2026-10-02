@@ -76,8 +76,70 @@ def valley(profile, guess, lo, hi):
     return a + int(np.argmin(profile[a:b]))
 
 
+def by_owner(pet, rgba, cells):
+    """Cut without slicing anything.
+
+    Every separate piece of the picture (a body, an ear tip, a ball, a tear)
+    goes WHOLE to the frame that holds most of its pixels. Nothing is cut at
+    a grid line, so an ear that pokes into the row above stays on its pet.
+
+    Frames are placed by their ideal cell (motion survives), then every frame
+    gets the same box, centred on where the pet usually sits.
+    """
+    H, W = rgba.shape[:2]
+    solid = rgba[..., 3] > 40
+    lab, n = ndimage.label(solid)
+
+    cell_id = np.full((H, W), -1, int)
+    for idx, (_, _, (x0, y0, x1, y1)) in enumerate(cells):
+        cell_id[y0:y1, x0:x1] = idx
+
+    # Owner of each piece = the cell holding most of its pixels.
+    ys, xs = np.nonzero(solid)
+    L, C = lab[ys, xs], cell_id[ys, xs]
+    owner = np.full(n + 1, -1, int)
+    order = np.argsort(L)
+    L, C = L[order], C[order]
+    starts = np.searchsorted(L, np.arange(1, n + 1))
+    ends = np.searchsorted(L, np.arange(1, n + 1), side="right")
+    for i, (a, b) in enumerate(zip(starts, ends), 1):
+        if b > a:
+            owner[i] = np.bincount(C[a:b][C[a:b] >= 0]).argmax()
+    owner_map = np.where(solid, owner[lab], -1)
+
+    # Faint edge pixels belong to the nearest solid pixel's owner.
+    dist, (iy, ix) = ndimage.distance_transform_edt(~solid, return_indices=True)
+    faint = (rgba[..., 3] > 0) & ~solid & (dist <= 3)
+    owner_map[faint] = owner_map[iy[faint], ix[faint]]
+
+    # Where does the pet usually sit inside its cell? Centre the box there.
+    pts = []
+    for idx, (_, _, (x0, y0, x1, y1)) in enumerate(cells):
+        fy, fx = np.nonzero(owner_map == idx)
+        assert len(fx), f"cell {idx} is empty"
+        pts.append((fy, fx))
+    shift = int(np.median([(fx.min() + fx.max()) / 2 - (c[2][0] + c[2][2]) / 2
+                           for (fy, fx), c in zip(pts, cells)]))
+    anchors = [((x0 + x1) // 2 + shift, y1) for _, _, (x0, y0, x1, y1) in cells]
+
+    half = max(int(np.abs(fx - ax).max()) for (fy, fx), (ax, ay) in zip(pts, anchors)) + 3
+    up = max(int(ay - fy.min()) for (fy, fx), (ax, ay) in zip(pts, anchors)) + 3
+    down = max(int(fy.max() + 1 - ay) for (fy, fx), (ax, ay) in zip(pts, anchors)) + 3
+    down = max(down, 1)
+
+    out = f"art/frames/{pet}"
+    os.makedirs(out, exist_ok=True)
+    for (name, k, _), (fy, fx), (ax, ay) in zip(cells, pts, anchors):
+        canvas = np.zeros((up + down, 2 * half, 4), np.uint8)
+        canvas[fy - (ay - up), fx - (ax - half)] = rgba[fy, fx]
+        Image.fromarray(canvas).save(f"{out}/{name}_{k:02d}.png")
+    print(f"{pet}: {len(cells)} frames, each {2 * half}x{up + down}, nothing cut")
+
+
 def main(pet):
     rgba, cells = {"pup": pup, "bunny": bunny}[pet]()
+    if pet == "pup":
+        return by_owner(pet, rgba, cells)
     solid = rgba[..., 3] > 0
     H, W = solid.shape
     out = f"art/frames/{pet}"
