@@ -4,14 +4,19 @@ A small virtual-pet game in Unity.
 
 ## What's here
 
-Two pets, each with idle, happy, sad, crying, eating, playing, studying and sleeping.
+Three pets, each with idle, happy, sad, crying, eating, playing, studying and sleeping.
 
 - `art/source/pet_sheet.png`: the wolf sheet, 6 frames per animation
 - `art/source/hamster_sheet.png`: the hamster sheet, 4 frames per animation (eating has 5)
 - `art/frames/wolf/`: 48 frames, all 202x187
 - `art/frames/hamster/`: 33 frames, all 208x187
+- `art/source/otter_sheet.png` and `art/frames/otter/`: 64 frames (8 per animation), all 185x142
 - Frames are named `<animation>_<frame>.png`, for example `idle_01.png`
-- `tools/slice_pet.py` and `tools/slice_hamster.py` re-cut a sheet into frames
+- `tools/slice_pet.py`, `tools/slice_hamster.py` and `tools/slice_otter.py` re-cut a sheet into frames
+
+## Just the images
+
+For a faster download with only the frames, use https://github.com/Zeref538/PocketPet-sprites
 
 ## Get a copy
 
