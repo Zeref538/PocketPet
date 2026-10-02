@@ -41,7 +41,16 @@ Clone the repo (see [Get a copy](#get-a-copy) below) or download the ZIP and unz
 
 If Hub says the version is missing or offers to open it with another version, install 6000.2.2f1 first (step 2). Opening with a different version can work but may change project files.
 
-### 4. Try it
+### 4. Build the pup (first open only)
+
+The project is set up as **Universal 2D** (URP with the 2D Renderer), like Shadow.
+
+1. Wait until the spinner in the bottom-right corner stops.
+2. Click the menu **PocketPet > Build Pup**.
+
+This rebuilds the 8 clips, the Animator and the scene in your Unity version, and adds the **Global Light 2D** the scene needs.
+
+### 5. Try it
 
 1. In the **Project** window, open `Assets/Scenes/Pup.unity`.
 2. Press **Play**.

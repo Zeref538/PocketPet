@@ -111,10 +111,19 @@ public static class PetBuilder
         cam.backgroundColor = new Color32(255, 228, 236, 255);   // soft pink
         cam.transform.position = new Vector3(0f, 0f, -10f);
 
+        // URP 2D lights sprites with 2D lights. One global light = even,
+        // full brightness, same as Shadow's scene.
+        var light = new GameObject("Global Light 2D").AddComponent<UnityEngine.Rendering.Universal.Light2D>();
+        light.lightType = UnityEngine.Rendering.Universal.Light2D.LightType.Global;
+
         var pet = new GameObject("Pup");
         pet.transform.position = new Vector3(0f, -0.9f, 0f);
         var sr = pet.AddComponent<SpriteRenderer>();
         sr.sprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{Frames}/idle_01.png");
+        // URP 2D's own sprite material, so the Global Light 2D lights the pup.
+        var lit = AssetDatabase.LoadAssetAtPath<Material>(
+            "Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat");
+        if (lit != null) sr.sharedMaterial = lit;
         pet.AddComponent<Animator>().runtimeAnimatorController = controller;
         pet.AddComponent<PetDemo>();
 
