@@ -14,6 +14,7 @@ Five pets, each with idle, happy, sad, crying, eating, playing, studying and sle
 - `art/source/pup_sheet.png` and `art/frames/pup/`: 48 frames (6 per animation), all 294x149, feet pinned to the same spot
 - `art/source/bunny_sheet.png` and `art/frames/bunny/`: 32 frames (4 per animation), all 137x107
 - Frames are named `<animation>_<frame>.png`, for example `idle_01.png`
+- `art/source/rooms_sheet.png` and `art/rooms/`: 4 room backgrounds (bedroom, playroom, garden, bathroom), also in `Game/Assets/Sprites/Rooms/`
 - `art/source/ui_sheet.png` and `art/ui/`: 44 UI pieces (buttons, pressed buttons, icons, square and round buttons, bars, speech bubble), also in `Game/Assets/Sprites/UI/`
 - `tools/slice_*.py` re-cut each sheet into frames (`python tools/slice_grid.py pup` or `bunny`)
 
@@ -35,9 +36,9 @@ Clone the repo (see [Get a copy](#get-a-copy) below) or download the ZIP and unz
 
 ### 3. See the animations
 
-1. In the **Project** window, open `Assets/Scenes/SampleScene.unity`. It has the Main Camera, the Global Light 2D and the **Pup**.
+1. In the **Project** window, open `Assets/Scenes/SampleScene.unity`. The pup sits on the rug in the bedroom.
 2. Press **Play**. The pup plays its idle animation in place.
-3. To watch the others: click **Pup**, open **Window > Animation > Animator**, and change the **Mood** number (0 to 7) while playing.
+3. Click the buttons on the right: **food** makes it eat, **love** makes it happy, **play** makes it play. After 3 seconds it goes back to idle.
 
 What is where:
 
