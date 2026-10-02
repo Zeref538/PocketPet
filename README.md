@@ -4,9 +4,14 @@ A small virtual-pet game in Unity.
 
 ## What's here
 
-- `art/source/pet_sheet.png`: the original sheet, 8 animations x 6 frames
-- `art/frames/`: one PNG per frame, all 202x187, named `<animation>_<frame>.png`
-- `tools/slice_pet.py`: re-cuts the sheet into frames (`python tools/slice_pet.py`)
+Two pets, each with idle, happy, sad, crying, eating, playing, studying and sleeping.
+
+- `art/source/pet_sheet.png`: the wolf sheet, 6 frames per animation
+- `art/source/hamster_sheet.png`: the hamster sheet, 4 frames per animation (eating has 5)
+- `art/frames/wolf/`: 48 frames, all 202x187
+- `art/frames/hamster/`: 33 frames, all 208x187
+- Frames are named `<animation>_<frame>.png`, for example `idle_01.png`
+- `tools/slice_pet.py` and `tools/slice_hamster.py` re-cut a sheet into frames
 
 ## Get a copy
 
@@ -53,7 +58,7 @@ If `git push` is refused, someone pushed first. Run `git pull`, then `git push` 
 ## Use the frames in Unity
 
 1. Drag `art/frames` into the Unity **Project** window.
-2. Select all 48 PNGs. In the Inspector set **Texture Type** to **Sprite (2D and UI)**.
+2. Select all the PNGs in one pet's folder. In the Inspector set **Texture Type** to **Sprite (2D and UI)**.
 3. Set **Filter Mode** to **Point (no filter)** so the pixels stay sharp.
 4. Set **Compression** to **None**, then click **Apply**.
-5. Select the 6 frames of one animation (for example `idle_01` to `idle_06`) and drag them into the Scene. Unity asks where to save the animation clip.
+5. Select the 6 frames of one animation (for example `idle_01` to `idle_04`) and drag them into the Scene. Unity asks where to save the animation clip.

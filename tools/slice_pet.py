@@ -14,7 +14,7 @@ import numpy as np
 from PIL import Image
 
 SRC = "art/source/pet_sheet.png"
-OUT = "art/frames"
+OUT = "art/frames/wolf"
 ROWS = ["idle", "happy", "sad", "crying", "eating", "playing", "studying", "sleeping"]
 COLS = 6
 
