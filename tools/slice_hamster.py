@@ -53,29 +53,26 @@ for key, name in NAMES.items():
     want = EXPECT.get(name, 4)
     assert len(frames[key]) == want, f"{name}: found {len(frames[key])} frames, expected {want}"
 
-# Cut every frame by its own pixels; note each one's box.
+# Cut every frame by its own pixels. Pin each one on the hamster's feet:
+# the bottom centre of its body (the big blob, ids[0]). The hamster stays
+# on one spot while it animates; tears and sparkles keep their place.
 cuts = []
 for key, group in frames.items():
     for f in group:
         mask = np.isin(lab, f["ids"]) & solid
         ys, xs = np.nonzero(mask)
-        piece = rgba.copy()
-        piece[..., 3] = np.where(mask, piece[..., 3], 0)
-        box = (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1)
-        cuts.append((key, Image.fromarray(piece).crop(box), box))
+        by, bx = np.nonzero((lab == f["ids"][0]) & solid)
+        cuts.append((key, ys, xs, ((bx.min() + bx.max()) // 2, by.max() + 1)))
 
-# One canvas size for all; each animation shares a floor line.
-floor = {k: max(c[2][3] for c in cuts if c[0] == k) for k in frames}
-lift = max(floor[k] - box[1] for k, _, box in cuts)     # tallest frame above its floor
-cw = max(p.width for _, p, _ in cuts) + 8
-ch = lift + 8
+half = max(int(np.abs(xs - ax).max()) for _, ys, xs, (ax, ay) in cuts) + 4
+up = max(int(ay - ys.min()) for _, ys, xs, (ax, ay) in cuts) + 4
+down = max(1, max(int(ys.max() + 1 - ay) for _, ys, xs, (ax, ay) in cuts) + 4)
 os.makedirs(OUT, exist_ok=True)
 count = {}
-for key, piece, box in cuts:
+for key, ys, xs, (ax, ay) in cuts:
     name = NAMES[key]
     count[name] = count.get(name, 0) + 1
-    frame = Image.new("RGBA", (cw, ch), (0, 0, 0, 0))
-    bottom_gap = floor[key] - box[3]            # how far above the floor it sits
-    frame.alpha_composite(piece, ((cw - piece.width) // 2, ch - 4 - bottom_gap - piece.height))
-    frame.save(f"{OUT}/{name}_{count[name]:02d}.png")
-print(f"{len(cuts)} frames, each {cw}x{ch}:", count)
+    canvas = np.zeros((up + down, 2 * half, 4), np.uint8)
+    canvas[ys - (ay - up), xs - (ax - half)] = rgba[ys, xs]
+    Image.fromarray(canvas).save(f"{OUT}/{name}_{count[name]:02d}.png")
+print(f"{len(cuts)} frames, each {2 * half}x{up + down}, feet pinned:", count)
