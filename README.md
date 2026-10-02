@@ -16,6 +16,18 @@ Five pets, each with idle, happy, sad, crying, eating, playing, studying and sle
 - Frames are named `<animation>_<frame>.png`, for example `idle_01.png`
 - `tools/slice_*.py` re-cut each sheet into frames (`python tools/slice_grid.py pup` or `bunny`)
 
+## Open the game in Unity
+
+The Unity project is the `Game` folder (Unity 6000.5.10f1).
+
+1. Open **Unity Hub**, click **Add**, then **Add project from disk**.
+2. Pick the `Game` folder inside PocketPet (not PocketPet itself).
+3. Open `Assets/Scenes/Pup.unity` and press **Play**.
+4. Press keys **1** to **8** to switch animation: idle, happy, sad, crying, eating, playing, studying, sleeping.
+
+In code, set the animation with `animator.SetInteger("Mood", 0..7)`.
+To rebuild the clips after changing frames: menu **PocketPet > Build Pup**.
+
 ## Just the images
 
 For a faster download with only the frames, use https://github.com/Zeref538/PocketPet-sprites
